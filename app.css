@@ -1,0 +1,24 @@
+html,
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+}
+
+nav {
+  display: none;
+}
+
+section {
+  margin: 50px 0;
+}
+
+[class*="col-sm-"] {
+  white-space: pre-line;
+}
+.title > div {
+  overflow: hidden;
+}
+img {
+  width: 200%;
+  margin: -188px 0 -340px -50%;
+}
