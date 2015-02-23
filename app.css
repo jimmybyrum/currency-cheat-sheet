@@ -4,19 +4,52 @@ body {
   font-weight: 300;
 }
 
-nav {
-  display: none;
+.nav {
+  position: fixed;
+  left: 50px;
+  z-index: 20;
+  font-size: 16px;
+}
+.nav .dropdown-toggle {
+  visibility: hidden;
+  font-size: 30px;
+}
+.nav .dropdown-menu {
+  border-color: transparent;
+  box-shadow: none;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, .9);
+}
+.scrolling .nav {
+  left: 10px;
+  top: 5px;
+}
+.scrolling .nav .dropdown-toggle {
+  visibility: visible;
+}
+.scrolling .nav .dropdown-menu {
+  border: 1px solid #ccc;
 }
 
 h1,
+h2,
 .details strong {
   position: relative;
   margin: 0;
   line-height: normal;
   font-family: 'Raleway', sans-serif;
 }
-h1 {
+h1,
+h2 {
   z-index: 3;
+}
+h2 {
+  padding: 12px 0 0;
+}
+.active h2 {
+  position: fixed;
+  top: 0;
+  z-index: 2;
 }
 .details strong {
   display: block;
@@ -24,27 +57,42 @@ h1 {
   font-size: 24px;
 }
 
-.affix {
-  position: fixed;
-  top: 0;
-  z-index: 2;
-}
 .affix-container {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1;
-  display: block;
+  display: none;
   height: 50px;
   background-color: rgba(255, 255, 255, .9);
+}
+.scrolling .affix-container {
+  display: block;
 }
 section:not(.active) .affix {
   display: none;
 }
+section img {
+  display: none;
+}
 
+.lander {
+  padding: 50px 0;
+}
 section {
   margin: 50px 0 100px;
+}
+
+.end-point,
+.break-point {
+  position: absolute;
+  width: 20px;
+  border-bottom: 1px solid blue;
+  height: 1px;
+}
+.end-point {
+  border-color: red;
 }
 
 .lander .details {
