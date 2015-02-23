@@ -9,9 +9,12 @@ body {
   left: 50px;
   z-index: 20;
   font-size: 16px;
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
 }
 .nav .dropdown-toggle {
-  visibility: hidden;
+  opacity: 0;
   font-size: 30px;
 }
 .nav .dropdown-menu {
@@ -25,7 +28,10 @@ body {
   top: 5px;
 }
 .scrolling .nav .dropdown-toggle {
-  visibility: visible;
+  opacity: 1;
+  -webkit-transition: opacity .2s linear;
+     -moz-transition: opacity .2s linear;
+          transition: opacity .2s linear;
 }
 .scrolling .nav .dropdown-menu {
   border: 1px solid #ccc;
@@ -33,7 +39,7 @@ body {
 
 h1,
 h2,
-.details strong {
+.details h3 {
   position: relative;
   margin: 0;
   line-height: normal;
@@ -44,14 +50,14 @@ h2 {
   z-index: 3;
 }
 h2 {
-  padding: 12px 0 0;
+  padding: 10px 0 0;
 }
 .active h2 {
   position: fixed;
   top: 0;
   z-index: 2;
 }
-.details strong {
+.details h3 {
   display: block;
   margin-bottom: -.7em;
   font-size: 24px;

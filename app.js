@@ -60,7 +60,9 @@ $(document).ready(function() {
           $html.removeClass('scrolling');
           section.$element.removeClass('active');
           section.$title.removeClass('affix');
-          $nav.addClass('open');
+          if (!$nav.hasClass('open')) {
+            $nav.addClass('open').css('opacity', 0);
+          }
         }
       }
       if (section.top < scrollTop) {
