@@ -4,11 +4,23 @@ body {
   font-weight: 300;
 }
 
+.nav,
+.other-nav {
+  font-size: 16px;
+}
+.other-nav {
+  margin-top: 30px;
+}
+.other-nav a {
+  display: inline-block;
+  padding: 3px 0;
+}
 .nav {
   position: fixed;
   left: 50px;
   z-index: 20;
-  font-size: 16px;
+  left: 10px;
+  top: 5px;
   -webkit-transition: all .2s linear;
      -moz-transition: all .2s linear;
           transition: all .2s linear;
@@ -22,18 +34,6 @@ body {
   box-shadow: none;
   background-color: #fff;
   background-color: rgba(255, 255, 255, .9);
-}
-@media (max-width: 479px) {
-  .nav {
-    display: none;
-  }
-  .scrolling .nav {
-    display: block;
-  }
-}
-.scrolling .nav {
-  left: 10px;
-  top: 5px;
 }
 .scrolling .nav .dropdown-toggle {
   opacity: 1;
@@ -93,19 +93,6 @@ h2 {
 section:not(.active) .affix {
   display: none;
 }
-/*section.active .images {
-  position: fixed;
-  top: 50px;
-  width: 100%;
-  z-index: 2;
-  background-color: rgba(255, 255, 255, .9);
-}
-section.active .images img {
-  max-height: 100px;
-}
-section.active .images img + span {
-  display: none;
-}*/
 
 .lander {
   padding: 50px 0;

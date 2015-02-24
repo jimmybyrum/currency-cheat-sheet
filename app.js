@@ -2,7 +2,7 @@ $(document).ready(function() {
   'use strict';
   var $html = $('html');
   var $window = $(window);
-  var $nav = $('.nav');
+  var $nav = $('.nav, .other-nav');
   var windowHeight = $window.height();
 
   var breakPoints = [];
@@ -17,12 +17,6 @@ $(document).ready(function() {
       var $title = $(this).find('h2');
       $title.parents('.row').css('min-height', $title.innerHeight() + 'px');
 
-      // var $images = $(this).find('.images');
-      // var imgHeight = {
-      //   'min-height': $images.innerHeight() + 'px'
-      // };
-      // $images.parent().css(imgHeight);
-
       breakPoints.push({
         id: idx,
         top: thisTop,
@@ -30,20 +24,6 @@ $(document).ready(function() {
         $element: $(this),
         $title: $title
       });
-
-      // var $breakPoint = $('<div class="break-point"/>');
-      // $breakPoint.html(thisTop);
-      // $breakPoint.css({
-      //   top: thisTop + 'px'
-      // });
-      // $breakPoint.appendTo('body');
-
-      // var $endPoint = $('<div class="end-point"/>');
-      // $endPoint.html(thisBottom);
-      // $endPoint.css({
-      //   top: thisBottom + 'px'
-      // });
-      // $endPoint.appendTo('body');
     });
   };
   setTimeout(setBreakPoints, 300);
@@ -51,18 +31,6 @@ $(document).ready(function() {
   var currentSection;
   var onScroll = function() {
     var scrollTop = $window.scrollTop();
-    var percent = scrollTop / windowHeight;
-    if (percent < 1) {
-      $nav.css({
-        opacity: (1 - percent),
-        'margin-top': -(Math.round(percent * 100))
-      });
-    } else if ($html.hasClass('scrolling')) {
-      $nav.css({
-        opacity: 1,
-        'margin-top': 0
-      }).removeClass('open');
-    }
 
     breakPoints.forEach(function(section, idx) {
       if (idx === 0) {
@@ -72,12 +40,6 @@ $(document).ready(function() {
           $html.removeClass('scrolling');
           section.$element.removeClass('active');
           section.$title.removeClass('affix');
-          if (!$nav.hasClass('open')) {
-            $nav.css('opacity', 0);
-            setTimeout(function() {
-              $nav.addClass('open');
-            }, 200);
-          }
         }
       }
       if (section.top < scrollTop) {
@@ -92,7 +54,7 @@ $(document).ready(function() {
       }
     });
   };
-  // onScroll = _.throttle(onScroll, 10);
+  // onScroll = _.throttle(onScroll, 100);
 
   $window.on('scroll', onScroll);
 
