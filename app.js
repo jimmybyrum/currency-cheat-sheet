@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   var breakPoints = [];
   var setBreakPoints = function() {
-    $('.lander').css('min-height', windowHeight);
+    // $('.lander').css('min-height', windowHeight);
 
     $('section').each(function(idx) {
       var thisTop = Math.round($(this).offset().top);
