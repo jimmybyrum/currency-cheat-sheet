@@ -4,7 +4,7 @@ body {
   font-weight: 300;
 }
 
-.nav,
+nav ol,
 .other-nav {
   font-size: 16px;
 }
@@ -15,34 +15,43 @@ body {
   display: inline-block;
   padding: 3px 0;
 }
-.nav {
+nav {
   position: fixed;
-  left: 50px;
-  z-index: 20;
-  left: 10px;
-  top: 5px;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+  /*z-index: -1;
+  opacity: 0;*/
+  height: 50px;
+  background-color: rgba(255, 255, 255, .9);
   -webkit-transition: all .2s linear;
      -moz-transition: all .2s linear;
           transition: all .2s linear;
 }
-.nav .dropdown-toggle {
-  opacity: 0;
-  font-size: 26px;
+.scrolling nav {
+  display: block;
+  /*opacity: 1;
+  z-index: 1;*/
 }
-.nav .dropdown-menu {
+nav .dropdown {
+  float: left;
+  margin: 12px 10px 0 0;
+}
+nav .dropdown-menu {
   border-color: transparent;
   box-shadow: none;
   background-color: #fff;
   background-color: rgba(255, 255, 255, .9);
 }
-.scrolling .nav .dropdown-toggle {
-  opacity: 1;
-  -webkit-transition: opacity .2s linear;
-     -moz-transition: opacity .2s linear;
-          transition: opacity .2s linear;
+nav h2 {
+  float: left;
 }
-.scrolling .nav .dropdown-menu {
-  border: 1px solid #ccc;
+@media (min-width: 768px) {
+  nav .dropdown {
+    margin-left: -30px;
+  }
 }
 
 h1,
@@ -60,16 +69,8 @@ h2 {
 h2 {
   padding: 10px 0 0;
 }
-.active h2 {
-  position: fixed;
-  top: 0;
-  z-index: 2;
-}
-@media (max-width: 479px) {
-  .active h2 {
-    left: 40px;
-    font-size: 22px;
-  }
+section.active h2 {
+  visibility: hidden;
 }
 .details h3 {
   display: block;
@@ -82,41 +83,13 @@ h2 {
   max-height: 250px;
 }
 
-.affix-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1;
-  display: none;
-  height: 50px;
-  background-color: rgba(255, 255, 255, .9);
-}
-.scrolling .affix-container {
-  display: block;
-}
-section:not(.active) .affix {
-  display: none;
-}
-
+section,
 .lander {
-  padding: 50px 0 100px;
+  padding: 0 0 100px;
 }
-section {
-  margin: 50px 0 100px;
+.lander {
+  padding-top: 50px;
 }
-
-.end-point,
-.break-point {
-  position: absolute;
-  width: 20px;
-  border-bottom: 1px solid blue;
-  height: 1px;
-}
-.end-point {
-  border-color: red;
-}
-
 .lander .details {
   white-space: pre-line;
 }

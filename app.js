@@ -1,62 +1,10 @@
-$(document).ready(function() {
+var ccs = (function() {
   'use strict';
   var $html = $('html');
   var $window = $(window);
-  var $nav = $('.nav, .other-nav');
-  var windowHeight = $window.height();
-
-  var breakPoints = [];
-  var setBreakPoints = function() {
-    // $('.lander').css('min-height', windowHeight);
-
-    $('section').each(function(idx) {
-      var thisTop = Math.round($(this).offset().top);
-      var height = $(this).innerHeight();
-      var thisBottom = Math.round(thisTop + height);
-
-      var $title = $(this).find('h2');
-      $title.parents('.row').css('min-height', $title.innerHeight() + 'px');
-
-      breakPoints.push({
-        id: idx,
-        top: thisTop,
-        bottom: thisBottom,
-        $element: $(this),
-        $title: $title
-      });
-    });
-  };
-  setTimeout(setBreakPoints, 300);
-
-  var currentSection;
-  var onScroll = function() {
-    var scrollTop = $window.scrollTop();
-
-    breakPoints.forEach(function(section, idx) {
-      if (idx === 0) {
-        if (section.top < scrollTop) {
-          $html.addClass('scrolling');
-        } else {
-          $html.removeClass('scrolling');
-          section.$element.removeClass('active');
-          section.$title.removeClass('affix');
-        }
-      }
-      if (section.top < scrollTop) {
-        if (currentSection && section.id !== currentSection.id) {
-          currentSection.$element.removeClass('active');
-          currentSection = section;
-        }
-        if (!currentSection) {
-          currentSection = section;
-        }
-        currentSection.$element.addClass('active');
-      }
-    });
-  };
-  // onScroll = _.throttle(onScroll, 100);
-
-  $window.on('scroll', onScroll);
+  var $nav = $('nav, .other-nav');
+  var $title = $('nav h2 a');
+  var $sections = $('section');
 
   $nav.find('a').on('click', function(e) {
     var target = $(this).attr('href');
@@ -65,4 +13,36 @@ $(document).ready(function() {
       $.scrollTo($target, 300, {easing: 'swing'});
     }
   });
-});
+
+  function onVisibilityChange() {
+    var scrollTop = $window.scrollTop();
+    var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    var scrollBottom = scrollTop + windowHeight;
+
+    if (scrollTop > $('.lander').innerHeight()) {
+      $html.addClass('scrolling');
+    } else {
+      $html.removeClass('scrolling');
+    }
+
+    $sections.each(function(idx) {
+      var $section = $(this);
+      var title = $section.find('h2').text();
+
+      var rect = $section[0].getBoundingClientRect();
+
+      var pastTop = rect.top <= 0;
+      var beforeBottom = rect.bottom >= 0 && rect.bottom < scrollBottom;
+
+      var inViewport = pastTop && beforeBottom;
+
+      if (inViewport && title) {
+        $title.text(title);
+        $section.addClass('active');
+      } else {
+        $section.removeClass('active');
+      }
+    });
+  }
+  $window.on('DOMContentLoaded load resize scroll', onVisibilityChange);
+})();
