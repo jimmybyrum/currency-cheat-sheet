@@ -17,6 +17,12 @@ $(document).ready(function() {
       var $title = $(this).find('h2');
       $title.parents('.row').css('min-height', $title.innerHeight() + 'px');
 
+      // var $images = $(this).find('.images');
+      // var imgHeight = {
+      //   'min-height': $images.innerHeight() + 'px'
+      // };
+      // $images.parent().css(imgHeight);
+
       breakPoints.push({
         id: idx,
         top: thisTop,
@@ -46,10 +52,16 @@ $(document).ready(function() {
   var onScroll = function() {
     var scrollTop = $window.scrollTop();
     var percent = scrollTop / windowHeight;
-    if (percent > .3 && percent < 1) {
-      $nav.css('opacity', 1 - percent);
+    if (percent < 1) {
+      $nav.css({
+        opacity: (1 - percent),
+        'margin-top': -(Math.round(percent * 100))
+      });
     } else if ($html.hasClass('scrolling')) {
-      $nav.css('opacity', 1).removeClass('open');
+      $nav.css({
+        opacity: 1,
+        'margin-top': 0
+      }).removeClass('open');
     }
 
     breakPoints.forEach(function(section, idx) {
@@ -61,7 +73,10 @@ $(document).ready(function() {
           section.$element.removeClass('active');
           section.$title.removeClass('affix');
           if (!$nav.hasClass('open')) {
-            $nav.addClass('open').css('opacity', 0);
+            $nav.css('opacity', 0);
+            setTimeout(function() {
+              $nav.addClass('open');
+            }, 200);
           }
         }
       }

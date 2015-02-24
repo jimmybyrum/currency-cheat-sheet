@@ -79,9 +79,19 @@ h2 {
 section:not(.active) .affix {
   display: none;
 }
-section img {
-  display: none;
+/*section.active .images {
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, .9);
 }
+section.active .images img {
+  max-height: 100px;
+}
+section.active .images img + span {
+  display: none;
+}*/
 
 .lander {
   padding: 50px 0;
@@ -105,7 +115,7 @@ section {
   white-space: pre-line;
 }
 
-.title > div {
+.images > div {
   overflow: hidden;
   text-align: center;
 }
@@ -114,10 +124,6 @@ section {
   font-family: helvetica, sans-serif;
   font-weight: 100;
   white-space: pre-line;
-}
-img {
-  width: 200%;
-  margin: -188px 0 -360px -50%;
 }
 img + span {
   display: block;
