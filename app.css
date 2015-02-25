@@ -2,110 +2,180 @@ html,
 body {
   font-size: 22px;
   font-weight: 300;
+  font-family: Helvetica, sans-serif;
 }
 
-nav ol,
-.other-nav {
-  font-size: 16px;
-}
-.other-nav {
-  margin-top: 30px;
-}
-.other-nav a {
+header .article,
+header .icons span,
+nav li span,
+nav .about,
+.tagline,
+section .title a,
+.details .image span {
   display: inline-block;
-  padding: 3px 0;
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-style: italic;
 }
-nav {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 10;
-  display: none;
-  /*z-index: -1;
-  opacity: 0;*/
-  height: 50px;
-  background-color: rgba(255, 255, 255, .9);
-  -webkit-transition: all .2s linear;
-     -moz-transition: all .2s linear;
-          transition: all .2s linear;
-}
-.scrolling nav {
+
+header {
+  position: relative;
   display: block;
-  /*opacity: 1;
-  z-index: 1;*/
+  padding: 10px 0 0;
+  background-color: #3e474f;
+  color: #9da1a4;
+  text-align: center;
 }
-nav .dropdown {
-  float: left;
-  margin: 12px 10px 0 0;
+header .article {
+  font-size: 36px;
 }
-nav .dropdown-menu {
-  border-color: transparent;
-  box-shadow: none;
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, .9);
+header h1 {
+  margin: -.1em 0 10px;
+  font-weight: bold;
+  font-size: 80px;
+  text-transform: uppercase;
+  color: #fff;
 }
-nav h2 {
-  float: left;
+header h1 em {
+  display: inline-block;
+  margin-left: -.25em;
+  font-style: normal;
+  color: #3e474f;
+  -webkit-text-stroke-width: 2px;
+     -moz-text-stroke-width: 2px;
+          text-stroke-width: 2px;
+  -webkit-text-stroke-color: #9da1a4;
+     -moz-text-stroke-color: #9da1a4;
+          text-stroke-color: #9da1a4;
+  /*text-shadow: 0 0 1px rgba(255, 255, 255, 1);*/
 }
-@media (min-width: 768px) {
-  nav .dropdown {
-    margin-left: -30px;
+@media (max-width: 767px) {
+  header h1 {
+    font-size: 50px;
   }
 }
-
-h1,
-h2,
-.details h3 {
+header .icons {
   position: relative;
-  margin: 0;
-  line-height: normal;
-  font-family: 'Raleway', sans-serif;
+  z-index: 2;
+  border-bottom: 7px solid rgba(0, 0, 0, .15);
 }
-h1,
-h2 {
-  z-index: 3;
+header .icons .row > div {
+  padding: 15px 0;
+  border-right: 1px dashed #9da1a4;
 }
-h2 {
-  padding: 10px 0 0;
+header .icons .row > :last-child {
+  border: none;
 }
-section.active h2 {
-  visibility: hidden;
+header .icons img {
+  margin: 0 auto;
 }
-.details h3 {
+header .icons span {
   display: block;
-  margin-bottom: -.7em;
+  margin: 10px 0 0;
+  color: #fff;
+  font-size: inherit;
+}
+header .bookmark {
+  position: absolute;
+  z-index: 5;
+  left: 30px;
+  top: 100%;
+}
+
+nav {
+  position: relative;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+  margin-top: -7px;
+  padding: 22px 15px 15px;
+  background-color: #e0e5e9;
+  color: #5b95cd;
+  -webkit-transition: all .1s linear;
+     -moz-transition: all .1s linear;
+          transition: all .1s linear;
+}
+nav.closed {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 0 !important;
+}
+nav .container {
+  max-width: 800px;
+}
+nav li a span {
+  width: 1.3em;
+  color: #5b95cd;
+  vertical-align: sub;
+}
+nav li a {
+  font-size: 15px;
+  color: #3e474f;
+}
+nav .about {
+  padding: 7px 20px 0;
+  margin-top: 7px;
+  font-size: 18px;
+  border-top: 1px solid #fff;
+}
+
+.tagline {
+  margin: 50px 0;
+  color: #999;
   font-size: 24px;
 }
-.details img {
+
+section .title {
+  text-align: center;
+}
+section .title a {
+  color: #3e474f;
+}
+
+.details {
+  font-size: 16px;
+  padding-bottom: 50px;
+}
+.details > div {
+  white-space: pre-line;
+}
+.details .image {
+  position: relative;
+  margin: 150px -12px 0;
+  padding: 10px 15px 0;
+  text-align: left;
+}
+.details > :first-child .image {
+  background-color: #5d8660;
+}
+.details > :nth-child(2n) .image {
+  background-color: #9e9455;
+}
+.details > :last-child .image {
+  background-color: #648791;
+}
+.details .image img {
   width: auto;
   height: auto;
-  max-height: 250px;
+  max-width: 200px;
+  bottom: 0;
+  margin: -150px auto 0;
 }
-
-section,
-.lander {
-  padding: 0 0 100px;
+.details .image span {
+  color: #fff;
+  font-size: 24px;
 }
-.lander {
-  padding-top: 50px;
+.details a {
+  color: inherit;
+  border-bottom: 1px dashed #999;
 }
-.lander .details {
-  white-space: pre-line;
+.details a:hover,
+.details a:active,
+.details a:visited {
+  text-decoration: none;
 }
-
-.details div {
-  font-size: 18px;
-  font-family: helvetica, sans-serif;
-  font-weight: 100;
-  white-space: pre-line;
-}
-img {
-  margin: 0 auto -2em;
-}
-img + span {
-  display: none;
-  font-weight: 200;
-  color: #aaa;
-  text-align: center;
+.details h3 {
+  margin: 0 0 -1em;
+  font-weight: bold;
+  font-size: inherit;
 }

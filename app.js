@@ -2,8 +2,8 @@ var ccs = (function() {
   'use strict';
   var $html = $('html');
   var $window = $(window);
-  var $nav = $('nav, .other-nav');
-  var $title = $('nav h2 a');
+  var $nav = $('nav');
+  var $title = $('nav a');
   var $sections = $('section');
 
   $nav.find('a').on('click', function(e) {
@@ -14,35 +14,51 @@ var ccs = (function() {
     }
   });
 
-  function onVisibilityChange() {
-    var scrollTop = $window.scrollTop();
-    var windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    var scrollBottom = scrollTop + windowHeight;
+  $nav.css('height', $nav.innerHeight());
 
-    if (scrollTop > $('.lander').innerHeight()) {
-      $html.addClass('scrolling');
+  $('.bookmark').on('click', function(e) {
+    e.preventDefault();
+    if ($nav.hasClass('closed')) {
+      $nav.removeClass('closed');
     } else {
-      $html.removeClass('scrolling');
+      $nav.addClass('closed');
     }
+  });
 
-    $sections.each(function(idx) {
-      var $section = $(this);
-      var title = $section.find('h2').text();
+  $sections.each(function(idx) {
+    var $sectionTitle = $(this).find('.title a');
+    $sectionTitle.text((++idx) + '. ' + $sectionTitle.text());
+  });
 
-      var rect = $section[0].getBoundingClientRect();
+  // function onVisibilityChange() {
+  //   var scrollTop = $window.scrollTop();
+  //   var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  //   var scrollBottom = scrollTop + windowHeight;
 
-      var pastTop = rect.top <= 0;
-      var beforeBottom = rect.bottom >= 0 && rect.bottom < scrollBottom;
+  //   if (scrollTop > $('.lander').innerHeight()) {
+  //     $html.addClass('scrolling');
+  //   } else {
+  //     $html.removeClass('scrolling');
+  //   }
 
-      var inViewport = pastTop && beforeBottom;
+  //   $sections.each(function(idx) {
+  //     var $section = $(this);
+  //     var title = $section.find('h2').text();
 
-      if (inViewport && title) {
-        $title.text(title);
-        $section.addClass('active');
-      } else {
-        $section.removeClass('active');
-      }
-    });
-  }
-  $window.on('DOMContentLoaded load resize scroll', onVisibilityChange);
+  //     var rect = $section[0].getBoundingClientRect();
+
+  //     var pastTop = rect.top <= 0;
+  //     var beforeBottom = rect.bottom >= 0 && rect.bottom < scrollBottom;
+
+  //     var inViewport = pastTop && beforeBottom;
+
+  //     if (inViewport && title) {
+  //       $title.text(title);
+  //       $section.addClass('active');
+  //     } else {
+  //       $section.removeClass('active');
+  //     }
+  //   });
+  // }
+  // $window.on('DOMContentLoaded load resize scroll', onVisibilityChange);
 })();
