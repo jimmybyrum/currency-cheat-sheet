@@ -41,13 +41,16 @@ header h1 em {
   margin-left: -.25em;
   font-style: normal;
   color: #3e474f;
-  -webkit-text-stroke-width: 2px;
+  /*-webkit-text-stroke-width: 2px;
      -moz-text-stroke-width: 2px;
           text-stroke-width: 2px;
   -webkit-text-stroke-color: #9da1a4;
      -moz-text-stroke-color: #9da1a4;
-          text-stroke-color: #9da1a4;
-  /*text-shadow: 0 0 1px rgba(255, 255, 255, 1);*/
+          text-stroke-color: #9da1a4;*/
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, .5),
+               1px -1px 0 rgba(255, 255, 255, .5),
+               -1px 1px 0 rgba(255, 255, 255, .5),
+               -1px -1px 0 rgba(255, 255, 255, .5);
 }
 @media (max-width: 767px) {
   header h1 {
@@ -57,6 +60,7 @@ header h1 em {
 header .icons {
   position: relative;
   z-index: 2;
+  padding-bottom: 15px;
   border-bottom: 7px solid rgba(0, 0, 0, .15);
 }
 header .icons .row > div {
@@ -132,6 +136,14 @@ section .title a {
   color: #3e474f;
 }
 
+h2 a:link,
+h2 a:hover,
+h2 a:active,
+h2 a:visited {
+  outline: none;
+  text-decoration: none;
+}
+
 .details {
   font-size: 16px;
   padding-bottom: 50px;
@@ -165,14 +177,18 @@ section .title a {
   color: #fff;
   font-size: 24px;
 }
-.details a {
+.details a,
+.details a:link,
+.details a:visited {
   color: inherit;
-  border-bottom: 1px dashed #999;
+  border-bottom: 1px dashed #ccc;
+  text-decoration: none;
 }
 .details a:hover,
-.details a:active,
-.details a:visited {
+.details a:active {
+  /*color: #5b95cd;*/
   text-decoration: none;
+  border-bottom: 1px solid #666;
 }
 .details h3 {
   margin: 0 0 -1em;
