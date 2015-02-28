@@ -26,15 +26,24 @@ header {
   z-index: 10;
   display: block;
   background-color: #3e474f;
+  margin-bottom: 60px;
   color: #9da1a4;
   text-align: center;
 }
 header .title {
   font-size: 80px;
   line-height: 0;
-  -webkit-transition: all .1s linear;
-     -moz-transition: all .1s linear;
-          transition: all .1s linear;
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  header .title {
+    font-size: 25px;
+  }
+}
+@media (max-width: 991px) {
+  header .title {
+    font-size: 45px;
+  }
 }
 header .article {
   display: inline-block;
@@ -72,22 +81,6 @@ header .icons {
   background-color: inherit;
   overflow: hidden;
 }
-.mini header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-}
-.mini header .title {
-  font-size: 25px !important;
-}
-.mini header .article,
-.mini header h1 {
-  font-size: inherit;
-  display: inline-block;
-  margin: 10px 0 0;
-}
 header .icons .row > div {
   padding: 15px 0;
   border-right: 1px dashed #9da1a4;
@@ -104,6 +97,21 @@ header .icons span {
   color: #fff;
   font-size: inherit;
 }
+
+@media (max-width: 767px) {
+  header .icons .container {
+    max-width: 80%;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  header .icons img {
+    max-height: 35px;
+  }
+  header .icons .row > div {
+    padding: 15px;
+  }
+}
+
 header .bookmark {
   position: absolute;
   z-index: 1;
@@ -113,11 +121,9 @@ header .bookmark {
      -moz-transition: bottom .1s linear;
           transition: bottom .1s linear;
 }
-header.closed .bookmark,
 .scrolling header .bookmark {
   bottom: -50px;
 }
-header .bookmark:hover,
 .scrolling header .bookmark:hover {
   bottom: -58px;
 }
@@ -131,9 +137,6 @@ nav {
   padding: 0 15px;
   background-color: #e0e5e9;
   color: #5b95cd;
-  -webkit-transition: all .1s linear;
-     -moz-transition: all .1s linear;
-          transition: all .1s linear;
 }
 nav:after {
   content: " ";
@@ -142,9 +145,6 @@ nav:after {
   left: 0;
   right: 0;
   border-top: 7px solid rgba(0, 0, 0, .15);
-}
-header.closed nav {
-  height: 0 !important;
 }
 nav .container {
   max-width: 800px;
@@ -187,8 +187,35 @@ nav .about {
   border-top: 1px solid #fff;
 }
 
+.scroll-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  -webkit-transition: all .1s linear;
+     -moz-transition: all .1s linear;
+          transition: all .1s linear;
+}
+@media (min-width: 768px) {
+  .scrolling .scroll-nav {
+    display: block;
+  }
+}
+.scroll-nav .title {
+  font-size: 25px;
+  line-height: 25px;
+}
+.scroll-nav .title * {
+  display: inline-block;
+  margin-top: 6px;
+  margin-bottom: 3px;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 .tagline {
-  margin: 15px 0 30px;
+  margin: 15px 0 20px;
   color: #999;
   font-size: 24px;
 }
