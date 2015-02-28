@@ -7,7 +7,7 @@ body {
 
 header .article,
 header .icons span,
-nav li span,
+nav li a em,
 nav .about,
 .tagline,
 section .title a,
@@ -20,19 +20,33 @@ section .title a,
 
 header {
   position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   display: block;
-  padding: 10px 0 0;
   background-color: #3e474f;
   color: #9da1a4;
   text-align: center;
 }
+header .title {
+  font-size: 80px;
+  line-height: 0;
+  -webkit-transition: all .1s linear;
+     -moz-transition: all .1s linear;
+          transition: all .1s linear;
+}
 header .article {
-  font-size: 36px;
+  display: inline-block;
+  margin: 10px 0 5px;
+  font-size: 45%;
+  line-height: normal;
 }
 header h1 {
-  margin: -.1em 0 10px;
+  margin: 0 0 15px;
   font-weight: bold;
-  font-size: 80px;
+  font-size: inherit;
+  line-height: normal;
   text-transform: uppercase;
   color: #fff;
 }
@@ -41,27 +55,38 @@ header h1 em {
   margin-left: -.25em;
   font-style: normal;
   color: #3e474f;
-  /*-webkit-text-stroke-width: 2px;
-     -moz-text-stroke-width: 2px;
-          text-stroke-width: 2px;
-  -webkit-text-stroke-color: #9da1a4;
-     -moz-text-stroke-color: #9da1a4;
-          text-stroke-color: #9da1a4;*/
   text-shadow: 1px 1px 0 rgba(255, 255, 255, .5),
                1px -1px 0 rgba(255, 255, 255, .5),
                -1px 1px 0 rgba(255, 255, 255, .5),
                -1px -1px 0 rgba(255, 255, 255, .5);
 }
-@media (max-width: 767px) {
-  header h1 {
-    font-size: 50px;
-  }
+header .top {
+  position: relative;
+  z-index: 5;
+  background-color: inherit;
 }
 header .icons {
   position: relative;
   z-index: 2;
-  padding-bottom: 15px;
-  border-bottom: 7px solid rgba(0, 0, 0, .15);
+  margin-bottom: 10px;
+  background-color: inherit;
+  overflow: hidden;
+}
+.mini header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+.mini header .title {
+  font-size: 25px !important;
+}
+.mini header .article,
+.mini header h1 {
+  font-size: inherit;
+  display: inline-block;
+  margin: 10px 0 0;
 }
 header .icons .row > div {
   padding: 15px 0;
@@ -81,9 +106,20 @@ header .icons span {
 }
 header .bookmark {
   position: absolute;
-  z-index: 5;
+  z-index: 1;
   left: 30px;
-  top: 100%;
+  bottom: 0;
+  -webkit-transition: bottom .1s linear;
+     -moz-transition: bottom .1s linear;
+          transition: bottom .1s linear;
+}
+header.closed .bookmark,
+.scrolling header .bookmark {
+  bottom: -50px;
+}
+header .bookmark:hover,
+.scrolling header .bookmark:hover {
+  bottom: -58px;
 }
 
 nav {
@@ -92,29 +128,57 @@ nav {
   display: block;
   overflow: hidden;
   margin-top: -7px;
-  padding: 22px 15px 15px;
+  padding: 0 15px;
   background-color: #e0e5e9;
   color: #5b95cd;
   -webkit-transition: all .1s linear;
      -moz-transition: all .1s linear;
           transition: all .1s linear;
 }
-nav.closed {
-  padding-top: 0;
-  padding-bottom: 0;
+nav:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-top: 7px solid rgba(0, 0, 0, .15);
+}
+header.closed nav {
   height: 0 !important;
 }
 nav .container {
   max-width: 800px;
+  padding: 10px 0;
 }
-nav li a span {
+nav li a em {
+  display: inline-block;
   width: 1.3em;
+  margin-right: 10px;
+  text-align: right;
   color: #5b95cd;
   vertical-align: sub;
 }
 nav li a {
+  display: block;
   font-size: 15px;
   color: #3e474f;
+  white-space: nowrap;
+}
+nav li a:hover,
+.about a:hover {
+  text-decoration: none;
+}
+nav li a span,
+.about a {
+  display: inline-block;
+  padding: 3px 5px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+nav li a:hover span,
+.about a:hover {
+  background-color: #fff;
 }
 nav .about {
   padding: 7px 20px 0;
@@ -124,7 +188,7 @@ nav .about {
 }
 
 .tagline {
-  margin: 50px 0;
+  margin: 15px 0 30px;
   color: #999;
   font-size: 24px;
 }
