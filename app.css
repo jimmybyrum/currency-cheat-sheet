@@ -287,9 +287,9 @@ h2 a:visited {
      -moz-border-radius: 3px;
           border-radius: 3px;
 }
-.details a:after,
-.details a:link:after,
-.details a:visited:after {
+.details:hover a:after,
+.details:hover a:link:after,
+.details:hover a:visited:after {
   content: ' ';
   display: block;
   position: absolute;
@@ -305,8 +305,8 @@ h2 a:visited {
   background-color: #e1eff6;
   border-bottom: none;
 }
-.details a:hover:after,
-.details a:active:after {
+.details:hover a:hover:after,
+.details:hover a:active:after {
   border-bottom-color: transparent;
 }
 .details h3 {

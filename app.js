@@ -9,7 +9,7 @@
     var $sectionTitle = $(this).find('.title a');
     var num = ++idx;
     $sectionTitle.text(num + '. ' + $sectionTitle.text());
-    $('nav [href="' + $sectionTitle.attr('href') + '"]').prepend('<em>' + num + '</em>');
+    $('nav ol [href="' + $sectionTitle.attr('href') + '"]').prepend('<em>' + num + '</em>');
   });
 
   var headerHeight = $header.innerHeight();
