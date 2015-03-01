@@ -5,6 +5,13 @@
   var $header = $('header');
   var $sections = $('section');
 
+  $sections.each(function(idx) {
+    var $sectionTitle = $(this).find('.title a');
+    var num = ++idx;
+    $sectionTitle.text(num + '. ' + $sectionTitle.text());
+    $('nav [href="' + $sectionTitle.attr('href') + '"]').prepend('<em>' + num + '</em>');
+  });
+
   var headerHeight = $header.innerHeight();
 
   var $scrollNav = $header.clone();
@@ -49,11 +56,6 @@
   });
   $('.title').on('click', function() {
     $.scrollTo(0, 300, {easing: 'swing'});
-  });
-
-  $sections.each(function(idx) {
-    var $sectionTitle = $(this).find('.title a');
-    $sectionTitle.text((++idx) + '. ' + $sectionTitle.text());
   });
 
   function onVisibilityChange() {

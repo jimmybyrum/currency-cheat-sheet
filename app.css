@@ -150,6 +150,12 @@ nav .container {
   max-width: 800px;
   padding: 10px 0;
 }
+nav ol {
+  display: block;
+  -webkit-columns: 4;
+     -moz-columns: 4;
+          columns: 4;
+}
 nav li a em {
   display: inline-block;
   width: 1.3em;
@@ -271,15 +277,37 @@ h2 a:visited {
 .details a,
 .details a:link,
 .details a:visited {
+  position: relative;
+  display: inline-block;
+  padding: 2px 2px 0;
+  margin: -2px -2px 0;
   color: inherit;
-  border-bottom: 1px dashed #ccc;
   text-decoration: none;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+.details a:after,
+.details a:link:after,
+.details a:visited:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  right: 0;
+  border-bottom: 1px dashed #D4DCDF;
 }
 .details a:hover,
 .details a:active {
-  /*color: #5b95cd;*/
   text-decoration: none;
-  border-bottom: 1px solid #666;
+  color: inherit;
+  background-color: #e1eff6;
+  border-bottom: none;
+}
+.details a:hover:after,
+.details a:active:after {
+  border-bottom-color: transparent;
 }
 .details h3 {
   margin: 0 0 -1em;
