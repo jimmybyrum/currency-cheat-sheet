@@ -5,11 +5,35 @@
   var $header = $('header');
   var $sections = $('section');
 
+  var $navList = $('<ol class="list-unstyled col-sm-3 col-xs-6" />');
   $sections.each(function(idx) {
     var $sectionTitle = $(this).find('.title a');
+    var navText = $sectionTitle.attr('data-text');
+    var text = $sectionTitle.text();
     var num = ++idx;
-    $sectionTitle.text(num + '. ' + $sectionTitle.text());
-    $('nav ol [href="' + $sectionTitle.attr('href') + '"]').prepend('<em>' + num + '</em>');
+    if (text !== 'About Us') {
+      $sectionTitle.text(num + '. ' + text);
+      var $navItem = $('<li />');
+      var $navItemLink = $('<a />');
+      $navItemLink.attr({
+        target: '_self',
+        href: $sectionTitle.attr('href')
+      });
+      var $navItemNumber = $('<em />');
+      $navItemNumber.text(num);
+      var $navItemText = $('<span />');
+      $navItemText.text(navText || text);
+
+      $navItemNumber.appendTo($navItemLink);
+      $navItemText.appendTo($navItemLink);
+      $navItemLink.appendTo($navItem);
+      $navItem.appendTo($navList);
+      if (num % 4 === 0) {
+        $navList.appendTo('.nav-list');
+        $navList = $('<ol class="list-unstyled col-sm-3 col-xs-6" start="' + (num + 1) + '" />');
+      }
+      // $('nav ol [href="' + $sectionTitle.attr('href') + '"]').prepend('<em>' + num + '</em>');
+    }
   });
 
   var headerHeight = $header.innerHeight();

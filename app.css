@@ -90,6 +90,7 @@ header .icons .row > :last-child {
 }
 header .icons img {
   margin: 0 auto;
+  max-height: 77px;
 }
 header .icons span {
   display: block;
@@ -149,12 +150,6 @@ nav:after {
 nav .container {
   max-width: 800px;
   padding: 10px 0;
-}
-nav ol {
-  display: block;
-  -webkit-columns: 4;
-     -moz-columns: 4;
-          columns: 4;
 }
 nav li a em {
   display: inline-block;
@@ -264,11 +259,12 @@ h2 a:visited {
   background-color: #648791;
 }
 .details .image img {
+  position: absolute;
   width: auto;
   height: auto;
-  max-width: 200px;
-  bottom: 0;
-  margin: -150px auto 0;
+  max-width: 150px;
+  bottom: 15px;
+  right: 30px;
 }
 .details .image span {
   color: #fff;
