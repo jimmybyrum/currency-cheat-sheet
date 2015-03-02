@@ -45,24 +45,23 @@
   $scrollNav.appendTo('body');
   var scrollNavHeight = $scrollNav.innerHeight();
 
-  var closed = false;
   function closeNav() {
     $scrollNav.css({
       top: -(scrollNavHeight) + 'px'
     });
-    closed = true;
+    $html.removeClass('open');
   }
   function openNav() {
     $scrollNav.css({
       top: 0
     });
-    closed = false;
+    $html.addClass('open');
   }
   closeNav();
 
   $scrollNav.find('.bookmark a').on('click', function(e) {
     e.preventDefault();
-    if (closed) {
+    if (!$html.hasClass('open')) {
       openNav();
     } else {
       closeNav();
