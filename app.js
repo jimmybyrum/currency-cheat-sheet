@@ -60,7 +60,7 @@
   }
   closeNav();
 
-  $scrollNav.find('.bookmark').on('click', function(e) {
+  $scrollNav.find('.bookmark a').on('click', function(e) {
     e.preventDefault();
     if (closed) {
       openNav();
@@ -88,6 +88,7 @@
       $html.addClass('scrolling');
     } else {
       $html.removeClass('scrolling');
+      closeNav();
     }
   }
   $window.on('DOMContentReady load resize scroll', onVisibilityChange);
