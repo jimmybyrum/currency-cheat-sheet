@@ -6,7 +6,7 @@
   var $sections = $('section');
 
   var navTemplate = _.template([
-    '<ol class="list-unstyled col-sm-<%= cols || 3 %> col-xs-6">',
+    '<ol class="list-unstyled col-sm-<%= colsSmall || 3 %> col-xs-<%= colsXSmall || 12 %>">',
     '<% for (var i = 0; i < sections.length; i++) { link = sections[i]; %>',
     '<li>',
     '<a target="_self" href="<%= link.href %>"><em><%= link.num %></em><span><%= link.text %></span></a>',
@@ -65,7 +65,8 @@
 
     if (num % 4 === 0) {
       var $navList = $(navTemplate({
-        cols: 3,
+        colsSmall: 3,
+        colsXSmall: 6,
         sections: sections
       }));
       $navList.appendTo('.nav-list');
@@ -74,7 +75,8 @@
 
     if (num % 8 === 0) {
       var $sourceList = $(navTemplate({
-        cols: 6,
+        colsSmall: 6,
+        colsXSmall: 12,
         sections: sources
       }));
       $sourceList.appendTo('.sources .content');

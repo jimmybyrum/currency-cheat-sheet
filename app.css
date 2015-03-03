@@ -198,7 +198,7 @@ nav .container {
 }
 .nav-style li a em {
   display: inline-block;
-  width: 1.3em;
+  width: 1.1em;
   margin-right: 10px;
   text-align: right;
   color: #5b95cd;
@@ -395,7 +395,7 @@ h2 a:visited {
   margin-bottom: 20px;
 }
 .sources .content ul {
-  padding-left: 38px;
+  padding-left: 32px;
   color: #fff;
 }
 .sources .content ul li {
@@ -441,7 +441,7 @@ footer h2 a:visited,
 footer h2 a:active,
 footer h2 a:hover {
   color: #fff;
-  font-size: 19px;
+  font-size: 18px;
 }
 footer .summary {
   padding-right: 30px;
@@ -458,3 +458,12 @@ footer .social {
 footer .social a {
   font-size: 32px;
 }
+@media (max-width: 767px) {
+  footer .summary {
+    padding-right: 15px;
+  }
+  footer .social {
+    text-align: center;
+  }
+}
+
