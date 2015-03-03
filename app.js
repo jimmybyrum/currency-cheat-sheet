@@ -5,36 +5,89 @@
   var $header = $('header');
   var $sections = $('section');
 
-  var $navList = $('<ol class="list-unstyled col-sm-3 col-xs-6" />');
+  var navTemplate = _.template([
+    '<ol class="list-unstyled col-sm-<%= cols || 3 %> col-xs-6">',
+    '<% for (var i = 0; i < sections.length; i++) { link = sections[i]; %>',
+    '<li>',
+    '<a target="_self" href="<%= link.href %>"><em><%= link.num %></em><span><%= link.text %></span></a>',
+    '<%= link.sources %>',
+    '</li>',
+    '<% } %>',
+    '</ol>'
+  ].join(''));
+
+  var sourceTemplate = _.template([
+    '<span><ul class="list-unstyled">',
+    '<% for (var i = 0; i < links.length; i++) { link = links[i]; %>',
+    '<li><a href="<%= link.href %>"><span><%= link.text %></span></a></li>',
+    '<% } %>',
+    '</ul></span>'
+  ].join(''));
+
+  var sections = [];
+  var sources = [];
   $sections.each(function(idx) {
+    var num = ++idx;
     var $sectionTitle = $(this).find('.title a');
+    var sectionHref = $sectionTitle.attr('href');
     var navText = $sectionTitle.attr('data-text');
     var text = $sectionTitle.text();
-    var num = ++idx;
-    if (text !== 'About Us') {
-      $sectionTitle.text(num + '. ' + text);
-      var $navItem = $('<li />');
-      var $navItemLink = $('<a />');
-      $navItemLink.attr({
-        target: '_self',
-        href: $sectionTitle.attr('href')
-      });
-      var $navItemNumber = $('<em />');
-      $navItemNumber.text(num);
-      var $navItemText = $('<span />');
-      $navItemText.text(navText || text);
 
-      $navItemNumber.appendTo($navItemLink);
-      $navItemText.appendTo($navItemLink);
-      $navItemLink.appendTo($navItem);
-      $navItem.appendTo($navList);
-      if (num % 4 === 0) {
-        $navList.appendTo('.nav-list');
-        $navList = $('<ol class="list-unstyled col-sm-3 col-xs-6" start="' + (num + 1) + '" />');
+    var links = [];
+    $(this).find('.col-sm-4 a').each(function() {
+      var sourceHref = $(this).attr('href');
+      var sourceHrefParts = sourceHref.replace(/https?:\/\//, '');
+      sourceHrefParts = sourceHrefParts.replace('www.', '');
+      var linkText = sourceHref;
+      var sourceHrefParts = sourceHrefParts.split('/');
+      if (sourceHref.match(/wikipedia/)) {
+        linkText = 'Wikipedia: ' + sourceHrefParts[sourceHrefParts.length - 1];
       }
-      // $('nav ol [href="' + $sectionTitle.attr('href') + '"]').prepend('<em>' + num + '</em>');
+      links.push({
+        href: sourceHref,
+        text: linkText
+      });
+    });
+
+    var sectionData = {
+      href: sectionHref,
+      num: num,
+      text: navText || text
+    };
+    sections.push(sectionData);
+
+    var sourceHtml = $(sourceTemplate({
+      links: links
+    }));
+    sources.push(_.extend({}, sectionData, {
+      sources: sourceHtml.html()
+    }));
+
+    if (num % 4 === 0) {
+      var $navList = $(navTemplate({
+        cols: 3,
+        sections: sections
+      }));
+      $navList.appendTo('.nav-list');
+      sections = [];
+    }
+
+    if (num % 8 === 0) {
+      var $sourceList = $(navTemplate({
+        cols: 6,
+        sections: sources
+      }));
+      $sourceList.appendTo('.sources .content');
+      sources = [];
     }
   });
+
+  var $sources = $('.sources');
+  $sources.find('.content').css('height', $('.sources .content').innerHeight());
+  $sources.find('.toggle').on('click', function() {
+    $sources.toggleClass('hiding');
+  });
+  $sources.addClass('hiding');
 
   var headerHeight = $header.innerHeight();
 
