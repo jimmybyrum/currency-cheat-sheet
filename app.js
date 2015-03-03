@@ -121,6 +121,14 @@
     }
   });
 
+  function setLocation(url) {
+    try {
+      history.pushState({}, document.title, url);
+    } catch(e) {
+      console.warn(e);
+    }
+  }
+
   $('nav a, .scroll-nav nav a').on('click', function(e) {
     var target = $(this).attr('href');
     if (target && target !== '') {
@@ -130,8 +138,9 @@
       $.scrollTo(top, 300, {easing: 'swing'});
     }
   });
-  $('.title').on('click', function() {
+  $('.top .title').on('click', function() {
     $.scrollTo(0, 300, {easing: 'swing'});
+    setLocation('/');
   });
 
   function onVisibilityChange() {

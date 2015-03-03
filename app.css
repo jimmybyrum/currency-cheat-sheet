@@ -259,10 +259,10 @@ nav .about {
   font-size: 25px;
   line-height: 25px;
 }
-.scroll-nav .title * {
+.scroll-nav .title > * {
   display: inline-block;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin-top: 8px;
+  margin-bottom: 4px;
   font-size: inherit;
   line-height: inherit;
 }
