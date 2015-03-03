@@ -129,6 +129,27 @@
     }
   }
 
+  $('.social a').on('click', function(e) {
+    e.preventDefault();
+    var href = $(this).attr('href');
+    var title = $(this).attr('title');
+    var config = {
+      width: 640,
+      height: 400,
+      top: 100,
+      left: 100
+    };
+    try {
+      config.left = (screen.availWidth / 2) - (config.width / 2);
+      config.top = (screen.availHeight / 2) - (config.height / 2);
+    } catch(e) {}
+    var conf = [];
+    _.each(config, function(value, key) {
+      conf.push(key + '=' + value);
+    });
+    window.open(href, title, conf.join(','));
+  });
+
   $('nav a, .scroll-nav nav a').on('click', function(e) {
     var target = $(this).attr('href');
     if (target && target !== '') {
