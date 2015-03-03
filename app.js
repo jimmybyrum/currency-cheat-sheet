@@ -38,7 +38,7 @@
       var sourceHref = $(this).attr('href');
       var sourceHrefParts = sourceHref.replace(/https?:\/\//, '');
       sourceHrefParts = sourceHrefParts.replace('www.', '');
-      var linkText = sourceHref;
+      var linkText = sourceHrefParts;
       var sourceHrefParts = sourceHrefParts.split('/');
       if (sourceHref.match(/wikipedia/)) {
         linkText = 'Wikipedia: ' + sourceHrefParts[sourceHrefParts.length - 1];
