@@ -33,6 +33,8 @@
     var navText = $sectionTitle.attr('data-text');
     var text = $sectionTitle.text();
 
+    $sectionTitle.text(num + '. ' + text);
+
     var links = [];
     $(this).find('.col-sm-4 a').each(function() {
       var sourceHref = $(this).attr('href');
