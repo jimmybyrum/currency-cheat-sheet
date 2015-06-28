@@ -11,7 +11,7 @@ header .icons span,
 nav .about,
 .tagline,
 section .title a,
-.details .image span,
+.details .currency,
 .sources h2,
 footer h2 {
   display: inline-block;
@@ -293,38 +293,39 @@ h2 a:visited {
 .details > div {
   white-space: pre-line;
 }
-.details .image {
+.details .currency {
+  display: block;
   position: relative;
   margin: 90px 0 0;
   padding: 10px 15px 0;
   text-align: left;
+  font-size: 30px;
+  color: #fff;
 }
 @media (max-width: 767px) {
-  .details .image {
+  .details .currency {
     margin-top: 100px;
   }
 }
-.details > :first-child .image {
+.details > :first-child .currency {
   background-color: #5d8660;
 }
-.details > :nth-child(2n) .image {
+.details > :nth-child(2n) .currency {
   background-color: #9e9455;
 }
-.details > :last-child .image {
+.details > :last-child .currency {
   background-color: #648791;
 }
-.details .image img {
+.details .currency i {
   position: absolute;
-  width: auto;
-  height: auto;
-  max-width: 150px;
-  max-height: 107px;
   bottom: 15px;
   right: 30px;
-}
-.details .image span {
-  color: #fff;
-  font-size: 24px;
+  display: inline-block;
+  width: 150px;
+  height: 107px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .details a,
 .details a:link,
