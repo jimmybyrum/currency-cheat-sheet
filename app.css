@@ -115,13 +115,18 @@ header .icons .row > div {
 header .icons .row > :last-child {
   border: none;
 }
-header .icons img {
+header .icons i {
+  display: inline-block;
+  width: 80%;
+  height: 77px;
   margin: 0 auto;
-  max-height: 77px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 header .icons span {
   display: block;
-  margin: 10px 0 0;
+  margin: 5px 0 0;
   color: #fff;
   font-size: inherit;
 }
@@ -129,15 +134,14 @@ header .icons span {
 @media (max-width: 767px) {
   header .icons .container {
     max-width: 80%;
-    font-size: 14px;
+    font-size: 17px;
     white-space: nowrap;
   }
-  header .icons img {
-    max-height: 35px;
-  }
-  header .icons .row > div {
-    padding: 15px;
-  }
+}
+
+.body-container {
+  padding-left: 45px;
+  padding-right: 45px;
 }
 
 header .bookmark {
@@ -147,25 +151,19 @@ header .bookmark {
 header .bookmark a {
   position: absolute;
   z-index: 1;
-  left: 15px;
+  left: 0;
   bottom: 0;
   -webkit-transition: bottom .1s linear;
      -moz-transition: bottom .1s linear;
           transition: bottom .1s linear;
 }
-@media (min-width: 855px) {
-  header .bookmark a {
-    left: -50px;
+@media (max-width: 767px) {
+  .body-container {
+    padding-left: 15px;
+    padding-right: 15px;
   }
-}
-@media (min-width: 1000px) and (max-width: 1080px) {
   header .bookmark a {
-    left: 0;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1280px) {
-  header .bookmark a {
-    left: 0;
+    left: 15px;
   }
 }
 .scrolling header .bookmark a {
@@ -319,7 +317,8 @@ h2 a:visited {
   position: absolute;
   width: auto;
   height: auto;
-  max-width: 130px;
+  max-width: 150px;
+  max-height: 107px;
   bottom: 15px;
   right: 30px;
 }
