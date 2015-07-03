@@ -153,9 +153,17 @@ header .bookmark a {
   z-index: 1;
   left: 0;
   bottom: 0;
+  display: block;
+  width: 35px;
   -webkit-transition: bottom .1s linear;
      -moz-transition: bottom .1s linear;
           transition: bottom .1s linear;
+}
+header .bookmark a img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
 }
 @media (max-width: 767px) {
   .body-container {
