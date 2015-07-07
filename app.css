@@ -207,7 +207,7 @@ nav .container {
   width: 1.1em;
   margin-right: 10px;
   text-align: right;
-  color: #5b95cd;
+  color: #6CA057;
   vertical-align: sub;
 }
 .nav-style li a {
@@ -239,6 +239,9 @@ nav .about {
   border-top: 1px solid #fff;
 }
 
+nav .about a{
+  color: #999;
+}
 .scroll-nav {
   position: fixed;
   top: 0;
