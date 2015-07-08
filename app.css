@@ -363,7 +363,7 @@ h2 a:visited {
 .details a:active {
   text-decoration: none;
   color: inherit;
-  background-color: #e7f6e1;
+  background-color: #e0eadc;
   border-bottom: none;
 }
 .details:hover a:hover:after,
